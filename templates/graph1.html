@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Report 1{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style/design.css">
+    <style>
+
+        h1{
+            color:white;
+            margin:10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            color: white;
+            justify-content: center; 
+            align-items: center; 
+        
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .CR {
+            color: white;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 200px; /* Adjusted for better visibility */
+        }
+
+        .confusion-matrices {
+            display: flex;
+            justify-content: space-between;
+            margin:20px
+        }
+
+        .confusion-matrix {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar included from the first code -->
+    {% include 'navbar.html' %}
+    
+    {% block content %}
+    
+    <center><h1>Training Graphs Batch 16, Epoch 30</h1></center>
+    <!-- Display the training history graph -->
+    <div id="graph">
+        {{ graph_html|safe }}
+    </div>
+
+    <!-- Classification Reports -->
+    <div class="CR">
+        <div>
+            <center><h1>Classification Reports Batch 16, Epoch 30</h1><center>
+            <div class="container">
+                <div class="column">
+                    <h2>Train Data</h2>
+                    <pre>{{ train_report }}</pre>
+                </div>
+
+                <div class="column">
+                    <h2>Test Data</h2>
+                    <pre>{{ test_report }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Confusion Matrices -->
+<center><h1>Confusion Matrices Batch 16, Epoch 30</h1></center>
+<div class="container">
+    <div class="confusion-matrices" style=" color: white;">
+        <div class="confusion-matrix" style="color: white;">
+            <center><h2>Train Data</h2><center>
+            <table border="1" style="color: white;">
+                <tr>
+                    <th></th>
+                    <th colspan="{{ categories|length }}">Predicted</th>
+                </tr>
+                <tr>
+                    <th style="color: white;">True</th>
+                    {% for category in categories %}
+                        <th>{{ category }}</th>
+                    {% endfor %}
+                </tr>
+                {% for i in range(cf_matrix_train|length) %}
+                    <tr>
+                        <td>{{ categories[i] }}</td>
+                        {% for j in range(cf_matrix_train[i]|length) %}
+                            {% if i == j %}
+                                <td style="background-color: black">{{ cf_matrix_train[i][j] }}</td>
+                            {% else %}
+                                <td>{{ cf_matrix_train[i][j] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="confusion-matrix" style="color: white;">
+            <center><h2>Test Data</h2><center>
+            <table border="1" style="color: white;">
+                <tr>
+                    <th></th>
+                    <th colspan="{{ categories|length }}">Predicted</th>
+                </tr>
+                <tr>
+                    <th style="color: white;">True</th>
+                    {% for category in categories %}
+                        <th>{{ category }}</th>
+                    {% endfor %}
+                </tr>
+                {% for i in range(cf_matrix_test|length) %}
+                    <tr>
+                        <td>{{ categories[i] }}</td>
+                        {% for j in range(cf_matrix_test[i]|length) %}
+                            {% if i == j %}
+                                <td style="background-color: black">{{ cf_matrix_test[i][j] }}</td>
+                            {% else %}
+                                <td>{{ cf_matrix_test[i][j] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Emotion Detection System{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style/design.css">
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+{% block content %}
+<div class="centered">
+    <center id="tt">Emotion-Detector</center>
+
+    <center>
+        <form method='POST' enctype="multipart/form-data" action="/">
+            <button style="margin-top:30px " class="submit-btn" name="button-value" value="live">Live-Detection</button>
+        </form>
+    </center>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

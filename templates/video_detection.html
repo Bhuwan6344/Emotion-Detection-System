@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Emotion Detector{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style/design.css">
+</head>
+<body>
+
+{% include 'navbar2.html' %}
+
+{% block content %}
+<body onload="loader('video')">
+    <center id="tt">
+       Emotion-Detector Live
+    </center>
+
+    <center>
+    <div class="form">
+        <div id="loading">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+    </center>
+
+    <div  style="display:none;">
+        <div id="video">
+            <img  src="{{url_for('video')}}" class="destory"/>
+        </div>
+    </div> 
+
+    <br>
+    <br>
+
+         
+    <script>
+        // to replace div elements
+        function loader(frame) {
+            const main = document.getElementById('loading');
+            const div = document.getElementById(frame);
+            const clone = div.cloneNode(true);
+
+            while (main.firstChild) main.firstChild.remove();
+
+                main.appendChild(clone);
+        }
+    </script>
+</body>
+
+{% endblock %}
+
+</body>
+</html>

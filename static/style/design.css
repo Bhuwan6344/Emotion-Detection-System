@@ -1,0 +1,138 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+body{
+  background : url(/static/images/bg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  font-family:"Arial";
+}
+
+input[type="file"]{
+  display:none;
+}
+
+label{
+  cursor: pointer;
+  }
+
+a{
+  text-decoration: none;
+}
+
+#tt{
+  font-family: 'FreakArt Personal Use', sans-serif;
+  font-size: 86px;
+  text-shadow: 0 0 5px #FF0000, 0 0 5px #0000FF;
+  font-stretch: expanded; 
+  color: #fff;
+  top:0;
+  border-radius: 50px;
+  margin-top: 150px;
+}
+
+#video {
+  box-shadow: 0 4px 8px rgb(66, 67, 67), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  width: 700px;
+  height: 480px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+
+}
+
+#loading {
+  text-align: center;
+  width: 640px;
+  height: 480px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  }
+
+  .wave {
+    width: 2.5px;
+    height: 50px;
+    background: linear-gradient(45deg, cyan, #fff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+  }
+  .wave:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .wave:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .wave:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .wave:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .wave:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .wave:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  .wave:nth-child(8) {
+    animation-delay: 0.7s;
+  }
+  .wave:nth-child(9) {
+    animation-delay: 0.8s;
+  }
+  .wave:nth-child(10) {
+    animation-delay: 0.9s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+button,label{
+  align-items: center;
+  background-color: #eeeeee;
+  border-radius: .25rem;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+
+}
+
+.form{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:5px;
+} 
+
+
+
+img{
+  background-size: cover;
+}
+
+#plotly-graph
+{
+  margin: 0px 100px;
+}
